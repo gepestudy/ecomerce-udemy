@@ -17,7 +17,13 @@ const AdminLayout = ({
         <AppShell
             padding="md"
             navbar={<AdminNavbar opened={opened} user={user} />}
-            header={<AdminHeader opened={opened} setOpened={setOpened} />}
+            header={
+                <AdminHeader
+                    user={user}
+                    opened={opened}
+                    setOpened={setOpened}
+                />
+            }
             styles={(theme) => ({
                 main: {
                     backgroundColor:

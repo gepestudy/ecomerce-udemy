@@ -1,5 +1,8 @@
+import { ChangeColorScheme } from "@/Components/mantine/Button/ChangeColorScheme";
+import { User } from "@/types";
 import {
     Burger,
+    Group,
     Header,
     MediaQuery,
     Text,
@@ -9,9 +12,11 @@ import React from "react";
 const AdminHeader = ({
     opened,
     setOpened,
+    user,
 }: {
     opened: boolean;
     setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+    user: User;
 }) => {
     const theme = useMantineTheme();
     return (
@@ -33,7 +38,14 @@ const AdminHeader = ({
                     />
                 </MediaQuery>
 
-                <Text>Admin Dashboard</Text>
+                <Group position="apart" w={"100%"}>
+                    <Group>
+                        <Text>{user.name}</Text>
+                    </Group>
+                    <Group>
+                        <ChangeColorScheme />
+                    </Group>
+                </Group>
             </div>
         </Header>
     );
