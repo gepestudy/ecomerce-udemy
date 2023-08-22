@@ -12,4 +12,13 @@ class AdminProfileController extends Controller
     {
         return Inertia::render('admin/Profile');
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'email' => ['email', 'required'],
+            'name' => ['required'],
+        ]);
+        dd($request->all());
+    }
 }

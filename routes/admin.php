@@ -9,4 +9,5 @@ Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard'
 
 Route::prefix('profile')->group(function () {
     Route::get('/', [AdminProfileController::class, 'index'])->name('profile.index');
+    Route::post('/update', [AdminProfileController::class, 'update'])->name('profile.update');
 });
