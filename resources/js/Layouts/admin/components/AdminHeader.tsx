@@ -9,6 +9,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import React from "react";
+import HeaderMenu from "./HeaderMenu";
 const AdminHeader = ({
     opened,
     setOpened,
@@ -43,7 +44,7 @@ const AdminHeader = ({
                         <Text>{user.name}</Text>
                     </Group>
                     <Group>
-                        <ChangeColorScheme />
+                        <HeaderMenu user={user} />
                     </Group>
                 </Group>
             </div>

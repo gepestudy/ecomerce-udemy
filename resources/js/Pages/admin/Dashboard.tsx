@@ -4,7 +4,7 @@ import { Head } from "@inertiajs/react";
 
 export default function Dashboard({ auth }: PageProps) {
     return (
-        <AdminLayout user={auth.user}>
+        <AdminLayout title="Dashboard" user={auth.user}>
             <Head title="Admin | Dashboard" />
 
             <div className="py-12">
