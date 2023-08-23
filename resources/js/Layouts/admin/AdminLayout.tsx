@@ -2,17 +2,20 @@ import { AppShell } from "@mantine/core";
 import React, { useState } from "react";
 import AdminHeader from "./components/AdminHeader";
 import { AdminNavbar } from "./components/AdminNavbar";
-import { User } from "@/types";
+import { Flash, User } from "@/types";
 import { Head } from "@inertiajs/react";
+import FlashMessage from "@/Components/flash/FLashMessage";
 
 const AdminLayout = ({
     children,
     user,
     title,
+    flash,
 }: {
     children: React.ReactNode;
     user: User;
     title: string;
+    flash: Flash;
 }) => {
     const [opened, setOpened] = useState(false);
 
@@ -41,6 +44,7 @@ const AdminLayout = ({
                 asideOffsetBreakpoint="sm"
             >
                 {children}
+                {flash && <FlashMessage flash={flash} />}
             </AppShell>
         </>
     );

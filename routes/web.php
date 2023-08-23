@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 /*
@@ -26,7 +27,8 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return 'test';
+    // return response(Storage::get('profiles/1.jpg'))->header('Content-Type', 'image/jpeg');
+    return 'ok';
 });
 
 Route::get('/dashboard', function () {

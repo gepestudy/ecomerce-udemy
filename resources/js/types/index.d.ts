@@ -7,9 +7,10 @@ export interface User {
 }
 
 export interface Flash {
-    message: string;
-    error: string;
-    success: string;
+    info?: string;
+    warning?: string;
+    error?: string;
+    success?: string;
 }
 
 export interface Ziggy {

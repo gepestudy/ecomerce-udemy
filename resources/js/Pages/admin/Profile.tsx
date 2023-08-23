@@ -1,11 +1,11 @@
 import AdminLayout from "@/Layouts/admin/AdminLayout";
-import { User } from "@/types";
-import { useForm } from "@inertiajs/react";
+import { PageProps, User } from "@/types";
+import { router, useForm } from "@inertiajs/react";
 import { Button, Card, Center, Image, Text, TextInput } from "@mantine/core";
 import { Dropzone, FileWithPath } from "@mantine/dropzone";
 import { useState } from "react";
 
-const Profile = ({ auth }: { auth: { user: User } }) => {
+const Profile = ({ auth, flash }: PageProps) => {
     const form = useForm({
         name: auth.user.name,
         email: auth.user.email,
@@ -25,7 +25,7 @@ const Profile = ({ auth }: { auth: { user: User } }) => {
     });
 
     return (
-        <AdminLayout title="Profile" user={auth.user}>
+        <AdminLayout flash={flash} title="Profile" user={auth.user}>
             <Card shadow="sm" padding="lg" radius="md" withBorder>
                 <Card.Section p="xs">
                     <Text size="xl">Update Profile</Text>
@@ -33,16 +33,31 @@ const Profile = ({ auth }: { auth: { user: User } }) => {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        form.post(route("admin.profile.update"));
+                        router.post(route("admin.profile.update"), form.data, {
+                            onSuccess: (e) => {
+                                form.clearErrors();
+                                router.reload();
+                            },
+                            onError: (e: any) => {
+                                form.setError(e);
+                            },
+                        });
+                        setFiles([]);
+                        form.setData({
+                            name: auth.user.name,
+                            email: auth.user.email,
+                            image: null,
+                        });
                     }}
                 >
                     <div>
                         <Dropzone
                             accept={["image/jpg", "image/jpeg", "image/png"]}
                             multiple={false}
-                            onDrop={(files: any) =>
-                                form.setData("image", files[0])
-                            }
+                            onDrop={(files: any) => {
+                                setFiles(files);
+                                form.setData("image", files[0]);
+                            }}
                             onReject={(e) =>
                                 setErrorImageFile(e[0].errors[0].message)
                             }
