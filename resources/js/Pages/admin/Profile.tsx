@@ -2,7 +2,7 @@ import AdminLayout from "@/Layouts/admin/AdminLayout";
 import { User } from "@/types";
 import { useForm } from "@inertiajs/react";
 import { Button, Card, Center, Image, Text, TextInput } from "@mantine/core";
-import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import { Dropzone, FileWithPath } from "@mantine/dropzone";
 import { useState } from "react";
 
 const Profile = ({ auth }: { auth: { user: User } }) => {
@@ -12,12 +12,12 @@ const Profile = ({ auth }: { auth: { user: User } }) => {
         image: null,
     });
     const [files, setFiles] = useState<FileWithPath[]>([]);
-
-    const previews = files.map((file, index) => {
+    const [errorImageFile, setErrorImageFile] = useState<string | null>(null);
+    const previews = files.map((file) => {
         const imageUrl = URL.createObjectURL(file);
         return (
             <Image
-                key={index}
+                key={imageUrl}
                 src={imageUrl}
                 imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
             />
@@ -38,17 +38,25 @@ const Profile = ({ auth }: { auth: { user: User } }) => {
                 >
                     <div>
                         <Dropzone
-                            accept={IMAGE_MIME_TYPE}
-                            maxFiles={1}
-                            onDrop={(files: any) => {
-                                setFiles(files);
-                                form.setData("image", files[0]);
-                            }}
+                            accept={["image/jpg", "image/jpeg", "image/png"]}
+                            multiple={false}
+                            onDrop={(files: any) =>
+                                form.setData("image", files[0])
+                            }
+                            onReject={(e) =>
+                                setErrorImageFile(e[0].errors[0].message)
+                            }
+                            maxSize={5120 * 1024}
                         >
                             <Text align="center">
                                 update image profile here
                             </Text>
                         </Dropzone>
+                        {errorImageFile && (
+                            <Text align="center" color="red" my="md">
+                                {errorImageFile}
+                            </Text>
+                        )}
 
                         {previews.length > 0 && (
                             <Center my="md">
