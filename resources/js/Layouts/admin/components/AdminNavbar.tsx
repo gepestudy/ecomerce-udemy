@@ -51,7 +51,7 @@ export function AdminNavbar({ opened, user }: { opened: boolean; user: User }) {
             className={classes.navbar}
             hiddenBreakpoint="sm"
             hidden={!opened}
-            width={{ sm: 250, lg: 300 }}
+            width={{ sm: 280 }}
         >
             <Navbar.Section className={classes.header}>
                 <Group position="apart">

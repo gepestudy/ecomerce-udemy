@@ -2,9 +2,9 @@ import AdminLayout from "@/Layouts/admin/AdminLayout";
 import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function Dashboard({ auth }: PageProps) {
+export default function Dashboard({ auth, ...props }: PageProps) {
     return (
-        <AdminLayout title="Dashboard" user={auth.user}>
+        <AdminLayout flash={props.flash} title="Dashboard" user={auth.user}>
             <Head title="Admin | Dashboard" />
 
             <div className="py-12">

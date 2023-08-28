@@ -22,7 +22,28 @@ const MantineProvider = ({ children }: { children: React.ReactNode }) => {
             colorScheme={colorScheme}
             toggleColorScheme={toggleColorScheme}
         >
-            <MP withGlobalStyles withNormalizeCSS theme={{ colorScheme }}>
+            <MP
+                withGlobalStyles
+                withNormalizeCSS
+                theme={{
+                    colorScheme,
+                    colors: {
+                        brand: [
+                            "#f0fdf4",
+                            "#dcfce7",
+                            "#bbf7d0",
+                            "#86efac",
+                            "#4ade80",
+                            "#22c55e",
+                            "#16a34a",
+                            "#15803d",
+                            "#166534",
+                            "#14532d",
+                        ],
+                    },
+                    primaryColor: "brand",
+                }}
+            >
                 {children}
             </MP>
         </ColorSchemeProvider>

@@ -4,6 +4,7 @@ import {
     Box,
     Collapse,
     Group,
+    Text,
     ThemeIcon,
     UnstyledButton,
     createStyles,
@@ -77,7 +78,7 @@ export function LinksGroup({
         theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
     const items = (hasLinks ? links : []).map((link) => (
         <Link className={classes.link} href={link.link} key={link.label}>
-            {link.label}
+            <Text size="xs">{link.label}</Text>
         </Link>
     ));
 
@@ -95,7 +96,9 @@ export function LinksGroup({
                                         <Icon size="1.1rem" />
                                     )}
                                 </ThemeIcon>
-                                <Box ml="md">{label}</Box>
+                                <Box ml="md">
+                                    <Text size="sm">{label}</Text>
+                                </Box>
                             </Box>
                         </Group>
                     </Link>
@@ -119,7 +122,9 @@ export function LinksGroup({
                                         <Icon size="1.1rem" />
                                     )}
                                 </ThemeIcon>
-                                <Box ml="md">{label}</Box>
+                                <Box ml="md">
+                                    <Text size="sm">{label}</Text>
+                                </Box>
                             </Box>
                             {hasLinks && (
                                 <ChevronIcon
