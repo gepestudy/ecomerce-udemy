@@ -12,18 +12,17 @@ export function Search(props: TextInputProps) {
     const searchRef = useRef<HTMLInputElement>(null);
     const handleSearch = (e?: React.FormEvent<HTMLFormElement> | any) => {
         e.preventDefault();
-        console.log(searchRef.current?.value);
     };
     return (
         <form onSubmit={(e) => handleSearch(e)}>
             <TextInput
                 icon={<IconSearch size="1.1rem" stroke={1.5} />}
-                radius="xl"
-                size="md"
+                radius="xl" 
+                size="sm"
                 ref={searchRef}
                 rightSection={
                     <ActionIcon
-                        size={32}
+                        size={28}
                         radius="xl"
                         variant="filled"
                         className="bg-green-500 hover:bg-green-600"

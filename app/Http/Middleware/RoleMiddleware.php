@@ -17,7 +17,7 @@ class RoleMiddleware
     {
         $userRole = $request->user()->role;
         if ($userRole !== $role) {
-            return redirect()->route($userRole === 'user' ? 'dashboard' : $userRole . '.dashboard');
+            return redirect()->route($userRole === 'user' ? 'user.dashboard' : $userRole . '.dashboard');
         }
         return $next($request);
     }

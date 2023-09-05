@@ -1,17 +1,17 @@
-import FlashMessage from "@/Components/flash/FLashMessage";
-import { Flash, User } from "@/types";
-import { Head } from "@inertiajs/react";
 import { AppShell } from "@mantine/core";
 import React, { useState } from "react";
-import FEHeader from "./components/FEHeader";
-import SubHeader from "./components/SubHeader";
+import { Flash, User } from "@/types";
+import { Head } from "@inertiajs/react";
+import FlashMessage from "@/Components/flash/FLashMessage";
+import FDNavbar from "@/Layouts/frontend/dashboard/components/FDNavbar";
+import FDHeader from "@/Layouts/frontend/dashboard/components/FDHeader";
 
-const FrontendLayout = ({
-    children,
-    user,
-    title,
-    flash,
-}: {
+const FrontendLayoutDashboard = ({
+                          children,
+                          user,
+                          title,
+                          flash,
+                      }: {
     children: React.ReactNode;
     user: User;
     title: string;
@@ -24,8 +24,14 @@ const FrontendLayout = ({
             <Head title={title} />
             <AppShell
                 padding="md"
-                // navbar={<AdminNavbar opened={opened} user={user} />}
-                header={<FEHeader opened={opened} setOpened={setOpened} />}
+                navbar={<FDNavbar opened={opened} user={user} />}
+                header={
+                    <FDHeader
+                        user={user}
+                        opened={opened}
+                        setOpened={setOpened}
+                    />
+                }
                 styles={(theme) => ({
                     main: {
                         backgroundColor:
@@ -37,11 +43,11 @@ const FrontendLayout = ({
                 navbarOffsetBreakpoint="sm"
                 asideOffsetBreakpoint="sm"
             >
-                <div className="container mx-auto">{children}</div>
+                {children}
                 {flash && <FlashMessage flash={flash} />}
             </AppShell>
         </>
     );
 };
 
-export default FrontendLayout;
+export default FrontendLayoutDashboard;

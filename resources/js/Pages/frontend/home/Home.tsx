@@ -3,7 +3,6 @@ import { PageProps } from "@/types";
 import React from "react";
 
 const Home = (props: PageProps) => {
-    console.log(props);
 
     return (
         <FrontendLayout
