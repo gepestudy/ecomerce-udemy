@@ -5,7 +5,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { IconSearch, IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 export function Search(props: TextInputProps) {
     const theme = useMantineTheme();
@@ -17,7 +17,7 @@ export function Search(props: TextInputProps) {
         <form onSubmit={(e) => handleSearch(e)}>
             <TextInput
                 icon={<IconSearch size="1.1rem" stroke={1.5} />}
-                radius="xl" 
+                radius="xl"
                 size="sm"
                 ref={searchRef}
                 rightSection={

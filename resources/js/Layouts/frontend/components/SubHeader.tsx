@@ -1,25 +1,28 @@
 import React from "react";
 import {Text} from "@mantine/core";
-import {Link, usePage} from "@inertiajs/react";
+import {Link, router, usePage} from "@inertiajs/react";
 import {User} from "@/types";
+import {Router} from "ziggy-js";
 
 const SubHeader = () => {
     // @ts-ignore
     const {auth}:{auth:{user:User | null}} = usePage().props
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
             <div className="">
                 <Text>SubHeader</Text>
             </div>
             <div className="">
                 {auth.user !== null ? (
-                    <div className={`flex gap-5`}>
+                    <div className={`flex items-center gap-5`}>
                         <Text>{auth?.user?.name}</Text>
-                        <Link href={route('logout')} method='post' as='button'>logout</Link>
+                        <Text onClick={()=> router.post(route('logout'))} className={`cursor-pointer`}>
+                            logout
+                        </Text>
                     </div>
                 ):(
-                    <div className={`flex gap-5`}>
-                        <Link href={route('login')} as='button'>Login</Link>
+                    <div className={`flex items-center gap-5`}>
+                        <Link href={route('login')}>Login</Link>
                     </div>
                 )}
             </div>

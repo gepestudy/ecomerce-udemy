@@ -10,6 +10,10 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $role = auth()->user()->role;
+        if($role !== 'user'){
+            return redirect()->route($role.'.dashboard');
+        }
         return Inertia::render('frontend/home/Home');
     }
 }
