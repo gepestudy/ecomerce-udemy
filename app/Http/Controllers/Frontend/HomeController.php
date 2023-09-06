@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $role = auth()->user()->role;
-        if($role !== 'user'){
-            return redirect()->route($role.'.dashboard');
+        if(auth()->user()){
+            $role = Auth::user()->role;
+            if($role == 'admin' || $role == 'vendor'){
+                return redirect()->route($role.'.dashboard');
+            }
         }
         return Inertia::render('frontend/home/Home');
     }
