@@ -3,6 +3,7 @@ import {Text} from "@mantine/core";
 import {Link, router, usePage} from "@inertiajs/react";
 import {User} from "@/types";
 import {Router} from "ziggy-js";
+import FDHeaderMenu from "@/Layouts/frontend/components/FDHeaderMenu";
 
 const SubHeader = () => {
     // @ts-ignore
@@ -15,10 +16,7 @@ const SubHeader = () => {
             <div className="">
                 {auth.user !== null ? (
                     <div className={`flex items-center gap-5`}>
-                        <Text>{auth?.user?.name}</Text>
-                        <Text onClick={()=> router.post(route('logout'))} className={`cursor-pointer`}>
-                            logout
-                        </Text>
+                        <FDHeaderMenu user={auth.user} />
                     </div>
                 ):(
                     <div className={`flex items-center gap-5`}>

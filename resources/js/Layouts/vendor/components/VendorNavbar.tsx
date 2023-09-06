@@ -59,7 +59,6 @@ export default function VendorNavbar({ opened, user }: { opened: boolean; user: 
                     <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
                 </Group>
             </Navbar.Section>
-
             <Navbar.Section
                 grow
                 className={classes.links}

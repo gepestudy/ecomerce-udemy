@@ -17,7 +17,7 @@ class AdminProfileController extends Controller
 {
     public function index()
     {
-        return Inertia::render('admin/Profile');
+        return Inertia::render('admin/AdminProfile');
     }
 
     public function updateProfile(Request $request)
@@ -42,7 +42,7 @@ class AdminProfileController extends Controller
             $user->image = $fileName;
         }
         $user->save();
-        return redirect()->back()->with(['success' => 'Profile Updated']);
+        return redirect()->route('admin.profile')->with(['success' => 'Profile Updated']);
     }
 
     public function updatePassword(Request $request)

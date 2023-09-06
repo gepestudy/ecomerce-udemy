@@ -14,7 +14,7 @@ import {
 import { Dropzone, FileWithPath } from "@mantine/dropzone";
 import { useState } from "react";
 
-const Profile = ({ auth, flash }: PageProps) => {
+const AdminProfile = ({ auth, flash }: PageProps) => {
     const theme = useMantineTheme();
     const form = useForm({
         name: auth.user.name,
@@ -209,4 +209,4 @@ const Profile = ({ auth, flash }: PageProps) => {
     );
 };
 
-export default Profile;
+export default AdminProfile;

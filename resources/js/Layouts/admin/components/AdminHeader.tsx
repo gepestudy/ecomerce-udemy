@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import React from "react";
 import HeaderMenu from "./HeaderMenu";
+import {Link} from "@inertiajs/react";
 const AdminHeader = ({
     opened,
     setOpened,
@@ -41,7 +42,17 @@ const AdminHeader = ({
 
                 <Group position="apart" w={"100%"}>
                     <Group>
-                        <Text>{user.name}</Text>
+                        <div className="hidden md:block">
+                            <Link href="/">
+                                <Text
+                                    size="lg"
+                                    weight="bold"
+                                    className="text-green-500"
+                                >
+                                    G-Comerce
+                                </Text>
+                            </Link>
+                        </div>
                     </Group>
                     <Group>
                         <HeaderMenu user={user} />

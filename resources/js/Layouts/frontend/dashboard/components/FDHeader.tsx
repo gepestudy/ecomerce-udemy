@@ -1,15 +1,9 @@
-import { ChangeColorScheme } from "@/Components/mantine/Button/ChangeColorScheme";
-import { User } from "@/types";
-import {
-    Burger,
-    Group,
-    Header,
-    MediaQuery,
-    Text,
-    useMantineTheme,
-} from "@mantine/core";
+import {User} from "@/types";
+import {Burger, Group, Header, MediaQuery, Text, useMantineTheme,} from "@mantine/core";
 import React from "react";
-import FDHeaderMenu from "./FDHeaderMenu";
+import FDHeaderMenu from "@/Layouts/frontend/components/FDHeaderMenu";
+import {Link} from "@inertiajs/react";
+
 const FDHeader = ({
     opened,
     setOpened,
@@ -41,7 +35,17 @@ const FDHeader = ({
 
                 <Group position="apart" w={"100%"}>
                     <Group>
-                        <Text>{user.name}</Text>
+                        <div className="hidden md:block">
+                            <Link href="/">
+                                <Text
+                                    size="lg"
+                                    weight="bold"
+                                    className="text-green-500"
+                                >
+                                    G-Comerce
+                                </Text>
+                            </Link>
+                        </div>
                     </Group>
                     <Group>
                         <FDHeaderMenu user={user} />

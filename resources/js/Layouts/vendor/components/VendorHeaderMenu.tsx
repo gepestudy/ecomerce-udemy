@@ -24,7 +24,7 @@ const VendorHeaderMenu = ({ user }: { user: User }) => {
 
             <Menu.Dropdown>
                 <Menu.Label>Menu</Menu.Label>
-                <Link href={route("admin.profile.index")}>
+                <Link href={route("vendor.profile")}>
                     <Menu.Item icon={<IconUser size={14} />}>Profile</Menu.Item>
                 </Link>
 

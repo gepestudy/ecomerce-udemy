@@ -1,30 +1,19 @@
-import { User } from "@/types";
-import { Link, router } from "@inertiajs/react";
-import {
-    ActionIcon,
-    Button,
-    Menu,
-    Text,
-    useMantineColorScheme,
-} from "@mantine/core";
-import {
-    IconLogout,
-    IconMoonStars,
-    IconSun,
-    IconUser,
-} from "@tabler/icons-react";
+import {User} from "@/types";
+import {Link, router} from "@inertiajs/react";
+import {Menu, Text, useMantineColorScheme,} from "@mantine/core";
+import {IconLogout, IconMoonStars, IconSun, IconUser,} from "@tabler/icons-react";
 
-const FDHeaderMenu = ({ user }: { user: User }) => {
+const HeaderMenu = ({ user }: { user: User }) => {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
     return (
         <Menu shadow="md" width={200} trigger="hover">
             <Menu.Target>
-                <Text className="cursor-pointer">Hi, {user.name}</Text>
+                <Text className="cursor-pointer">{user.name}</Text>
             </Menu.Target>
 
             <Menu.Dropdown>
                 <Menu.Label>Menu</Menu.Label>
-                <Link href={route("admin.profile.index")}>
+                <Link href={route("user.profile")}>
                     <Menu.Item icon={<IconUser size={14} />}>Profile</Menu.Item>
                 </Link>
 
@@ -70,4 +59,4 @@ const FDHeaderMenu = ({ user }: { user: User }) => {
     );
 };
 
-export default FDHeaderMenu;
+export default HeaderMenu;

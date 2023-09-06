@@ -1,16 +1,9 @@
-import { Logo } from "@/Components/Logo";
-import { UserButton } from "@/Components/mantine/Button/UserButton";
-import { NavbarLinksGroup } from "@/Components/mantine/links/NavbarLinksGroup";
-import { User } from "@/types";
-import {
-    Code,
-    Group,
-    Navbar,
-    ScrollArea,
-    createStyles,
-    rem,
-} from "@mantine/core";
-import { IconGauge } from "@tabler/icons-react";
+import {UserButton} from "@/Components/mantine/Button/UserButton";
+import {NavbarLinksGroup} from "@/Components/mantine/links/NavbarLinksGroup";
+import {User} from "@/types";
+import {Code, createStyles, Group, Navbar, rem, ScrollArea, Text} from "@mantine/core";
+import {IconGauge} from "@tabler/icons-react";
+import {Logo} from "@/Components/Logo";
 
 interface Link {
     label: string;
@@ -28,7 +21,7 @@ export interface NavbarMockData {
 export default function FDNavbar({ opened, user }: { opened: boolean; user: User }) {
     const { classes } = useStyles();
     const mockdata: NavbarMockData[] = [
-        { label: "Dashboard", icon: IconGauge, link: "/admin/dashboard" },
+        { label: "Dashboard", icon: IconGauge, link: "/user/dashboard" },
         {
             label: "Market news",
             icon: 98,
@@ -59,7 +52,6 @@ export default function FDNavbar({ opened, user }: { opened: boolean; user: User
                     <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
                 </Group>
             </Navbar.Section>
-
             <Navbar.Section
                 grow
                 className={classes.links}
