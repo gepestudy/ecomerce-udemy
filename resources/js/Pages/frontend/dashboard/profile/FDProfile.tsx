@@ -42,7 +42,7 @@ const FDProfile = ({ auth, flash,ziggy }: PageProps) => {
     const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         router.post(route("user.profile.update"), form.data, {
-            onSuccess: (e) => {
+            onSuccess: () => {
                 form.clearErrors();
                 router.reload();
             },
@@ -60,7 +60,7 @@ const FDProfile = ({ auth, flash,ziggy }: PageProps) => {
     const handleUpdatePassword = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         router.post(route("user.password.update"), formPassword.data, {
-            onSuccess: (e) => {
+            onSuccess: () => {
                 formPassword.clearErrors();
                 router.reload();
             },
