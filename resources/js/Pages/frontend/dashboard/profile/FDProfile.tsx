@@ -53,11 +53,6 @@ const FDProfile = ({ auth, flash,ziggy }: PageProps) => {
             },
         });
         setFiles([]);
-        form.setData({
-            name: auth.user.name,
-            email: auth.user.email,
-            image: null,
-        });
     };
     const handleUpdatePassword = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

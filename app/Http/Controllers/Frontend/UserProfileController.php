@@ -40,7 +40,7 @@ class UserProfileController extends Controller
             $user->image = $fileName;
         }
         $user->save();
-        return redirect()->route('user.profile')->with(['success' => 'Profile Updated']);
+        return redirect()->back()->with(['success' => 'Profile Updated']);
     }
 
     public function updatePassword(Request $request)
