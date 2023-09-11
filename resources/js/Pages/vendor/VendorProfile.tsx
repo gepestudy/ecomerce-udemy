@@ -15,7 +15,7 @@ import {Dropzone, FileWithPath} from "@mantine/dropzone";
 import {useMemo, useState} from "react";
 import FrontendLayoutDashboard from "@/Layouts/frontend/dashboard/FrontendLayoutDashboard";
 
-const AdminProfile = ({ auth, flash,ziggy }: PageProps) => {
+const VendorProfile = ({ auth, flash,ziggy }: PageProps) => {
     const theme :MantineTheme = useMantineTheme();
     const form = useForm({
         name: auth.user.name,
@@ -43,7 +43,7 @@ const AdminProfile = ({ auth, flash,ziggy }: PageProps) => {
 
     const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        router.post(route("admin.profile.update"), form.data, {
+        router.post(route("vendor.profile.update"), form.data, {
             onSuccess: () => {
                 form.clearErrors();
                 router.reload();
@@ -56,7 +56,7 @@ const AdminProfile = ({ auth, flash,ziggy }: PageProps) => {
     };
     const handleUpdatePassword = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        router.post(route("admin.password.update"), formPassword.data, {
+        router.post(route("vendor.password.update"), formPassword.data, {
             onSuccess: () => {
                 formPassword.clearErrors();
                 router.reload();
@@ -213,4 +213,4 @@ const AdminProfile = ({ auth, flash,ziggy }: PageProps) => {
     );
 };
 
-export default AdminProfile;
+export default VendorProfile;
