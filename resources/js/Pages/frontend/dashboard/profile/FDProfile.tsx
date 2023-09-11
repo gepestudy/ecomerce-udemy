@@ -12,7 +12,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import {Dropzone, FileWithPath} from "@mantine/dropzone";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import FrontendLayoutDashboard from "@/Layouts/frontend/dashboard/FrontendLayoutDashboard";
 
 const FDProfile = ({ auth, flash,ziggy }: PageProps) => {
@@ -28,16 +28,18 @@ const FDProfile = ({ auth, flash,ziggy }: PageProps) => {
     });
     const [files, setFiles] = useState<FileWithPath[]>([]);
     const [errorImageFile, setErrorImageFile] = useState<string | null>(null);
-    const previews = files.map((file) => {
-        const imageUrl = URL.createObjectURL(file);
-        return (
-            <Image
-                key={imageUrl}
-                src={imageUrl}
-                imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
-            />
-        );
-    });
+    const previews = useMemo(()=>{
+        return files.map((file) => {
+            const imageUrl = URL.createObjectURL(file);
+            return (
+                <Image
+                    key={imageUrl}
+                    src={imageUrl}
+                    imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
+                />
+            );
+        })
+    },[files])
 
     const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
